@@ -1,0 +1,11 @@
+{
+    "name": "red-vs-blue-3",
+    "displayName": "Red vs Blue 3",
+    "description": "",
+    "author": "VoidDustry",
+    "main": "net.voiddustry.redvsblue.Main",
+    "hidden": false,
+    "java": true,
+    "version": "3.00",
+    "minGameVersion": 144.1
+}
