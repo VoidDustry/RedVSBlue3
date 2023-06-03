@@ -1,9 +1,10 @@
 package net.voiddustry.redvsblue3.utils;
 
 import arc.struct.ObjectMap;
+import arc.struct.StringMap;
 
 public class Colors {
-    private static final ObjectMap<String, String> colors = ObjectMap.of(
+    private static final StringMap colors = StringMap.of(
             "[white]", "\u001B[37m",
             "[gray]", "\u001b[90m",
 
@@ -27,10 +28,13 @@ public class Colors {
             "[u]", "\u001B[4m"
     );
 
-    public static String parseColors(String string) {
-        String[] result = {""};
-        colors.forEach(object -> result[0] = string.replace(object.key, object.value));
+    public static String parseColors(String text) {
+        String string = text;
 
-        return result[0];
+        for (ObjectMap.Entry<String, String> color : colors) {
+            string = string.replace(color.key, color.value);
+        }
+
+        return string;
     }
 }
