@@ -1,6 +1,7 @@
 package net.voiddustry.redvsblue3.utils;
 
 import mindustry.game.Team;
+import mindustry.gen.Call;
 import mindustry.gen.Groups;
 import mindustry.gen.Player;
 import mindustry.gen.Unit;
@@ -9,7 +10,10 @@ import mindustry.world.Tile;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class Utils {
+
+    public static boolean debug = false;
 
     public static List<Unit> getUnitsCountOnTile(Tile tile) {
         List<Unit> units = new ArrayList<>();
@@ -56,7 +60,11 @@ public class Utils {
         newUnit.rotation = oldUnit.rotation;
         newUnit.type = oldUnit.type;
 
-        player.unit(newUnit);
-        oldUnit.kill();
+        if (!newUnit.dead) {
+            Call.unitControl(player, newUnit);
+            oldUnit.kill();
+        } else {
+            Log.err("[red]Spawned unit is dead");
+        }
     }
 }
