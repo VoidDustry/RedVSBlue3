@@ -3,7 +3,7 @@
     "displayName": "Red vs Blue 3",
     "description": "",
     "author": "VoidDustry",
-    "main": "net.voiddustry.redvsblue.Main",
+    "main": "net.voiddustry.redvsblue3.Main",
     "hidden": false,
     "java": true,
     "version": "3.00",
