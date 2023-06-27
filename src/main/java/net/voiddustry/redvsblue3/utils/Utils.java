@@ -56,7 +56,7 @@ public class Utils {
         newUnit.rotation = oldUnit.rotation;
         newUnit.type = oldUnit.type;
 
-        oldUnit.kill();
         player.unit(newUnit);
+        oldUnit.kill();
     }
 }
