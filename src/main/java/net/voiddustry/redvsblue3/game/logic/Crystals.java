@@ -88,19 +88,16 @@ public class Crystals {
                 case 0 -> {
                     Tile tile = crystals.get(1).getTileOn();
                     Utils.teleportPlayer(player, tile);
-                    Log.info("Teleporting " + player.plainName() + " to crystal " + crystals.get(1).getType());
                 }
 
                 case 1 -> {
                     Tile tile = crystals.get(2).getTileOn();
                     Utils.teleportPlayer(player, tile);
-                    Log.info("Teleporting " + player.plainName() + " to crystal " + crystals.get(2).getType());
                 }
 
                 case 2 -> {
                     Tile tile = crystals.get(3).getTileOn();
                     Utils.teleportPlayer(player, tile);
-                    Log.info("Teleporting " + player.plainName() + " to crystal " + crystals.get(3).getType());
                 }
             }
             net.voiddustry.redvsblue3.player.Player.getPlayer(player).setInMenu(false);
