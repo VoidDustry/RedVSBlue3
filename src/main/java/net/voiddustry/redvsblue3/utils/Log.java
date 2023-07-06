@@ -1,5 +1,7 @@
 package net.voiddustry.redvsblue3.utils;
 
+import java.util.Arrays;
+
 import static net.voiddustry.redvsblue3.utils.Time.getTime;
 
 @SuppressWarnings("unused")
@@ -25,7 +27,12 @@ public class Log {
     }
 
     public static void warn(String text) {
-        String textFinal = getTime() + stamp + " [lyellow][W] " + text;
+        String textFinal = getTime() + stamp + " [yellow][W] " + text;
+        System.out.println(Colors.parseColors(textFinal));
+    }
+
+    public static void ulv(Object... objects) {
+        String textFinal = getTime() + stamp + " [purple][W] " + Arrays.toString(objects);
         System.out.println(Colors.parseColors(textFinal));
     }
 }

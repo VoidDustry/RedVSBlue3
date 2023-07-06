@@ -3,6 +3,7 @@ package net.voiddustry.redvsblue3.game.domain;
 import mindustry.game.Team;
 import mindustry.world.Tile;
 
+@SuppressWarnings("unused")
 public class CrystalData {
     private String type;
     private int number;

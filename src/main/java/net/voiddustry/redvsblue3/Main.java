@@ -3,6 +3,7 @@ package net.voiddustry.redvsblue3;
 import arc.util.CommandHandler;
 import mindustry.mod.Plugin;
 import net.voiddustry.redvsblue3.commands.Commands;
+import net.voiddustry.redvsblue3.utils.Log;
 
 public class Main extends Plugin {
     @Override

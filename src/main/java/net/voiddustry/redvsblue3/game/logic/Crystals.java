@@ -1,8 +1,6 @@
 package net.voiddustry.redvsblue3.game.logic;
 
-import arc.math.geom.Position;
 import arc.struct.ObjectMap;
-import arc.util.Log;
 import arc.util.Timer;
 
 import mindustry.content.Blocks;
@@ -13,7 +11,9 @@ import mindustry.ui.Menus;
 import mindustry.world.Tile;
 
 import net.voiddustry.redvsblue3.game.domain.CrystalData;
+import net.voiddustry.redvsblue3.player.Players;
 import net.voiddustry.redvsblue3.utils.Random;
+import net.voiddustry.redvsblue3.utils.Log;
 import net.voiddustry.redvsblue3.utils.Utils;
 
 public class Crystals {
@@ -21,7 +21,7 @@ public class Crystals {
     private static final ObjectMap<Integer, CrystalData> crystals = new ObjectMap<>();
 
     public static void spawnCrystals() {
-        Log.info("&pSpawning crystals...");
+        Log.info("[red]Spawning crystals...");
         for(int i = 1; i <= 3;i++) {
             String type = "N/A";
 
@@ -37,7 +37,7 @@ public class Crystals {
 
             CrystalData crystal = new CrystalData(type, i, Team.blue, tile, 0);
             crystals.put(i, crystal);
-            Log.info("&cSpawned crystal at &p" + crystal.getTileOn().x + " " + crystal.getTileOn().y);
+            Log.debug("[purple]Spawned crystal at [cyan]" + crystal.getTileOn().x + " " + crystal.getTileOn().y);
         }
     }
 
@@ -79,7 +79,7 @@ public class Crystals {
     }
 
     public static void openTeleportMenu(Player player) {
-        if(net.voiddustry.redvsblue3.player.Player.getPlayer(player).isInMenu()) {
+        if(Players.getPlayer(player).isInMenu()) {
            return;
         }
 
@@ -100,7 +100,7 @@ public class Crystals {
                     Utils.teleportPlayer(player, tile);
                 }
             }
-            net.voiddustry.redvsblue3.player.Player.getPlayer(player).setInMenu(false);
+            Players.getPlayer(player).setInMenu(false);
         }));
 
         CrystalData[] crystals1 = new CrystalData[4];
@@ -120,7 +120,7 @@ public class Crystals {
                 third
         };
 
-        net.voiddustry.redvsblue3.player.Player.getPlayer(player).setInMenu(true);
+        Players.getPlayer(player).setInMenu(true);
         Call.menu(player.con, menu, "[cyan]Teleport Menu", "Choose Crystal to teleport", buttons);
     }
 }

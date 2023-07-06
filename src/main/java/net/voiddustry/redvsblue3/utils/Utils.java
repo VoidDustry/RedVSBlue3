@@ -1,11 +1,13 @@
 package net.voiddustry.redvsblue3.utils;
 
+import arc.util.Timer;
+import mindustry.content.UnitTypes;
 import mindustry.game.Team;
-import mindustry.gen.Call;
 import mindustry.gen.Groups;
 import mindustry.gen.Player;
 import mindustry.gen.Unit;
 import mindustry.world.Tile;
+import net.voiddustry.redvsblue3.player.Players;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,12 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class Utils {
 
+    public static int timer;
     public static boolean debug = false;
+
+    public static int getRandomInt(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
 
     public static List<Unit> getUnitsCountOnTile(Tile tile) {
         List<Unit> units = new ArrayList<>();
@@ -50,6 +57,16 @@ public class Utils {
         return team == Team.blue ? Team.crux : team == Team.crux ? Team.blue : null;
     }
 
+    public static boolean BluePlayersDied() {
+        for (Unit unit : Groups.unit) {
+            if (unit.team == Team.blue) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static void teleportPlayer(Player player, Tile tile) {
         Unit oldUnit = player.unit();
         Unit newUnit = oldUnit.type.spawn(oldUnit.team, tile.x * 8, tile.y * 8);
@@ -61,10 +78,14 @@ public class Utils {
         newUnit.type = oldUnit.type;
 
         if (!newUnit.dead) {
-            Call.unitControl(player, newUnit);
+            Players.getPlayer(player).setUnit(newUnit);
             oldUnit.kill();
         } else {
             Log.err("[red]Spawned unit is dead");
         }
+    }
+
+    public static void initTimer() {
+        Timer.schedule(() -> timer++, 0, 1);
     }
 }

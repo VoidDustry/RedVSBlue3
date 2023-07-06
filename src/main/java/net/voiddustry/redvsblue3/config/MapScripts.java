@@ -1,13 +1,10 @@
 package net.voiddustry.redvsblue3.config;
 
 import mindustry.Vars;
-import mindustry.content.Blocks;
-import mindustry.world.Tile;
 import net.voiddustry.redvsblue3.game.domain.MapScriptData;
 import net.voiddustry.redvsblue3.utils.Log;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,7 +32,6 @@ public class MapScripts {
     }
 
     private static MapScriptData parseScript(String path) throws IOException {
-        Log.warn(path);
         MapScriptData mapScriptData = null;
 
         BufferedReader br = new BufferedReader(new FileReader(path));
@@ -76,7 +72,6 @@ public class MapScripts {
 
                 mapScriptData = new MapScriptData(x, y, Boolean.getBoolean(keyAndValue.get("save-core")), keyAndValue.get("border").equals("v"), Integer.parseInt(keyAndValue.get("border-width")));
 
-                Log.info(mapScriptData.toString());
             }
         }
         return mapScriptData;
@@ -84,14 +79,9 @@ public class MapScripts {
 
     public static MapScriptData loadScript(String path) {
         try {
-            Log.info(path);
             return parseScript(path);
         } catch (IOException e) {
             return null;
         }
-    }
-
-    private static boolean canParseScript() {
-        return false;
     }
 }
